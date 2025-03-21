@@ -1,0 +1,11 @@
+body {
+    background-color: rgb(218, 239, 241);
+  }
+  #page_title {
+    background-color: rgb(155, 131, 131);
+    width: 100%;
+    margin: 0; /* Usuwanie domyślnych marginesow */
+    position: fixed; /* Przyklejenie elementu do ekranu */
+    top: 0; /* Ustawienie odległości od góry na 0 */
+    left: 0; /* Ustawienie odległości od lewej na 0 */
+}
