@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 body {
     background-color: rgb(221, 210, 210);
     padding-top: 70; 
@@ -5,11 +10,11 @@ body {
 #page_title {
     background-color: rgb(155, 131, 131);
     width: 100%;
-    margin: 0; 
     position: fixed; 
     top: 0; 
     left: 0; 
     height: 18%;
+    padding: 20px 0px;
 }
 #page_title h1 {
     color: rgb(0, 0, 0);
@@ -22,7 +27,6 @@ body {
     align-items: center; 
     background-color: rgb(199, 180, 180);
     width: 100%;
-    margin: 0;
     position: fixed;
     top: 18%;
     left: 0;
@@ -47,12 +51,11 @@ body {
     align-items: center; 
     background-color: rgb(199, 180, 180);
     width: 100%;
-    margin: 0; 
     position: fixed;
     top: 24%;
     left: 0;
     height: 7%;
-    padding: 0 10px; 
+    padding: 0px 10px; 
 }
 #search {
     background-color: rgb(240, 240, 240);
@@ -115,4 +118,51 @@ select option {
     background-color: rgb(240, 240, 240); 
     color: rgb(63, 24, 40); 
     padding: 5px; 
+}
+
+#content {
+    background-color: rgb(221, 210, 210);
+    width: 100%;
+    position: fixed;
+    top: 31%;
+    left: 0;
+    height: 100%;
+}
+
+#books{
+    display: flex; 
+    margin: 0 auto;
+    background-color: rgb(221, 210, 210);
+    width: 90%;
+    border-collapse: collapse; 
+    position: fixed;
+    top: 40%;
+    left: 5%;
+}
+
+#books th, #books td {
+    text-align: left; 
+}
+
+#books th {
+    font-weight: bold; 
+    border-bottom: 1px solid rgb(63, 24, 40); 
+}
+
+#books td {
+    width: 150px; 
+    padding: 10px 0px;
+}
+
+#add_new {
+    position: fixed; /* Keep the button fixed */
+    top: 40%; /* Position it below the table */
+    left: 70%; /* Center horizontally */
+    padding: 10px 20px;
+    background-color: rgb(63, 24, 40);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
