@@ -1,11 +1,118 @@
 body {
-    background-color: rgb(218, 239, 241);
-  }
-  #page_title {
+    background-color: rgb(221, 210, 210);
+    padding-top: 70; 
+}
+#page_title {
     background-color: rgb(155, 131, 131);
     width: 100%;
-    margin: 0; /* Usuwanie domyślnych marginesow */
-    position: fixed; /* Przyklejenie elementu do ekranu */
-    top: 0; /* Ustawienie odległości od góry na 0 */
-    left: 0; /* Ustawienie odległości od lewej na 0 */
+    margin: 0; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    height: 18%;
+}
+#page_title h1 {
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding: 10px 60px; 
+}
+#sub_title {
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    background-color: rgb(199, 180, 180);
+    width: 100%;
+    margin: 0;
+    position: fixed;
+    top: 18%;
+    left: 0;
+    height: 7%;
+    padding-right: 10px; 
+}
+#cart, #logIn_logOut{
+    background-color: rgb(63, 24, 40);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block; 
+    font-size: 14px;
+    margin: 6px 10px; 
+    cursor: pointer;
+}
+#search_bar {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    background-color: rgb(199, 180, 180);
+    width: 100%;
+    margin: 0; 
+    position: fixed;
+    top: 24%;
+    left: 0;
+    height: 7%;
+    padding: 0 10px; 
+}
+#search {
+    background-color: rgb(240, 240, 240);
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 2px;
+    border-color: rgb(63, 24, 40);
+    padding: 5px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    width: auto; 
+}
+
+#search_button {
+    padding: 5px 15px;
+    height: 29px;
+    border-radius: 2px;
+    border-color: rgb(63, 24, 40);
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-left: 2px;
+}
+
+.slider {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 150px;
+    height: 7px; 
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    margin-right: 30px; 
+    margin-left: 4px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none; 
+    width: 15px; 
+    height: 15px; 
+    background-color:rgb(63, 24, 40); 
+    border-radius: 50%; 
+    cursor: pointer; 
+}
+select {
+    background-color: rgb(240, 240, 240); 
+    color: rgb(63, 24, 40); 
+    border: 2px solid rgb(63, 24, 40); 
+    border-radius: 5px; 
+    padding: 5px 20px;
+    font-size: 14px; 
+    cursor: pointer; 
+    width: auto; 
+    height: 29px;
+    margin-right: 30px;
+    margin-left: 4px;
+}
+
+select option {
+    background-color: rgb(240, 240, 240); 
+    color: rgb(63, 24, 40); 
+    padding: 5px; 
 }
