@@ -37,13 +37,22 @@ function addNewItem() {
     }
 }
 
+
+function deleteItem(itemText) {
+    // Find the index of the item in the array
+    const itemIndex = items.findIndex(item => item[0] === itemText);
+    items.splice(itemIndex, 1); 
+    displayList(); 
+}
+
+
 function displayList() {
     // Reset the HTML string
     let str = '<ul id="list">';
 
     // Generate the list items
     items.forEach(function (item) {
-        str += `<li class="${item[1]}">${item[0]}</li>`;
+        str += `<li id="${item[1]}"><button class="delete" onclick="deleteItem('${item[0]}')">X</button>${item[0]}</li>`;
     });
 
     str += '</ul>';
