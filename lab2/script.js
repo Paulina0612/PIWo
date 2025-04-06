@@ -14,7 +14,7 @@ function listElementClick(event) {
     // Get the text content of the clicked element
     const itemText = listItem.textContent.replace("X", "").trim();
 
-    const itemIndex = items.findIndex(item => item[0] === itemText);
+    const itemIndex = items.findIndex(item => item[0]+item[2] || item[0] === itemText);
 
     if (itemIndex !== -1) {
         // Toggle the class of the clicked element
@@ -23,13 +23,18 @@ function listElementClick(event) {
             listItem.classList.add("checked");
             // Update the second value in the array
             items[itemIndex][1] = "checked"; 
+            items[itemIndex][2] = new Date();
         } else {
             listItem.classList.remove("checked");
             listItem.classList.add("not_checked");
             // Update the second value in the array
             items[itemIndex][1] = "not_checked"; 
+            items[itemIndex][2] = null;
         }
     }
+
+    // Refresh the list to show the updated date
+    displayList();
 }
 
 function returnLastItem(){
@@ -52,7 +57,7 @@ function add(input, ifChecked){
         alert("Item text empty!");
     } else {
         // Add the new item to the array
-        items.push([input, ifChecked]); 
+        items.push([input, ifChecked, null]); 
         // Refresh the list
         displayList(); 
     }
@@ -78,8 +83,9 @@ function displayList() {
 
     // Generate the list items
     items.forEach(function (item, index) {
+        const date = item[2] ? `<span class="date">(${item[2].toLocaleString()})</span>` : ""; // Format the date if it exists
         str += `    <li class="${item[1]}">
-                        ${item[0]}
+                        ${item[0]} ${date}
                         <button class="delete-button" data-index="${index}">X</button>
                     </li>`;
     });
