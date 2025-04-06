@@ -1,0 +1,10 @@
+/* When clicked on, add a background color and strike out text */
+ul li.not_checked {
+    color: #000000;
+  }
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    color: #636363;
+    text-decoration: line-through;
+  }

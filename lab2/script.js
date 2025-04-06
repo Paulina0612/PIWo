@@ -1,23 +1,41 @@
-let items = ["yhguy"];
+let items = [];
 
-function listElementClick () {
-    //TODO: Implement
+function listElementClick(event) {
+    // Get the clicked element
+    const listItem = event.target;
 
-    alert("rctvtfvy");
-};
+    // Get the text content of the clicked element
+    const itemText = listItem.textContent;
 
+    // Find the corresponding item in the items array
+    const itemIndex = items.findIndex(item => item[0] === itemText);
 
-
-function addNewItem(){
-    const input = document.getElementById('new_item_text').value;
-
-    if(input == "") alert("Item text empty!");
-    else items.push(input);
-    
-    displayList();
+    if (itemIndex !== -1) {
+        // Toggle the class of the clicked element
+        if (listItem.classList.contains("not_checked")) {
+            listItem.classList.remove("not_checked");
+            listItem.classList.add("checked");
+            items[itemIndex][1] = "checked"; // Update the second value in the array
+        } else {
+            listItem.classList.remove("checked");
+            listItem.classList.add("not_checked");
+            items[itemIndex][1] = "not_checked"; // Update the second value in the array
+        }
+    }
 }
 
+function addNewItem() {
+    // Get item text
+    const input = document.getElementById('new_item_text').value;
 
+    // Check if text not empty
+    if (input === "") {
+        alert("Item text empty!");
+    } else {
+        items.push([input, "not_checked"]); // Add the new item to the array
+        displayList(); // Refresh the list
+    }
+}
 
 function displayList() {
     // Reset the HTML string
@@ -25,13 +43,19 @@ function displayList() {
 
     // Generate the list items
     items.forEach(function (item) {
-        str += `<li class="not_checked" onclick="listElementClick()">${item}</li>`;
+        str += `<li class="${item[1]}">${item[0]}</li>`;
     });
 
     str += '</ul>';
 
     // Update the DOM with the new list
     document.getElementById("TODOList").innerHTML = str;
+
+    // Attach event listeners to all list items
+    const listItems = document.querySelectorAll("#TODOList li");
+    listItems.forEach(function (item) {
+        item.addEventListener("click", listElementClick);
+    });
 }
 
 // Initial display of the list
