@@ -1,4 +1,5 @@
-let items = [];
+const items = [];
+const trash = [];
 
 function listElementClick(event) {
     // Get the clicked element
@@ -30,22 +31,35 @@ function listElementClick(event) {
     }
 }
 
+function returnLastItem(){
+    if (trash.length == 1){
+        add(trash[0][0], trash[0][1])
+        trash.splice(0, trash.length); 
+    }
+    else alert("No items in trash");
+}
+
 function addNewItem() {
     // Get item text
     const input = document.getElementById('new_item_text').value;
+    add(input, "not_checked");
+}
 
+function add(input, ifChecked){
     // Check if text not empty
     if (input === "") {
         alert("Item text empty!");
     } else {
         // Add the new item to the array
-        items.push([input, "not_checked"]); 
+        items.push([input, ifChecked]); 
         // Refresh the list
         displayList(); 
     }
 }
 
 function deleteItem(index){
+    trash.splice(0, trash.length); 
+    trash.push(items.at(index));
     items.splice(index, 1);
     displayList();
 }
