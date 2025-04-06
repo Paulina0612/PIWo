@@ -58,7 +58,10 @@ function add(input, ifChecked){
 }
 
 function deleteItem(index){
-    const ifConfirm = confirm("Are you sure you want to delete item?");
+    let text = "Are you sure you want to delete task: ";
+    text += items.at(index)[0];
+    text += "?"
+    const ifConfirm = confirm(text);
 
     if (ifConfirm==true){
         trash.splice(0, trash.length); 
