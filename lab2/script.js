@@ -4,10 +4,14 @@ function listElementClick(event) {
     // Get the clicked element
     const listItem = event.target;
 
-    // Get the text content of the clicked element
-    const itemText = listItem.textContent;
+    // Ignore click if it's on the delete button
+    if (listItem.classList.contains("delete-button")) {
+        return;
+    }
 
-    // Find the corresponding item in the items array
+    // Get the text content of the clicked element
+    const itemText = listItem.textContent.replace("X", "").trim();
+
     const itemIndex = items.findIndex(item => item[0] === itemText);
 
     if (itemIndex !== -1) {
@@ -15,11 +19,13 @@ function listElementClick(event) {
         if (listItem.classList.contains("not_checked")) {
             listItem.classList.remove("not_checked");
             listItem.classList.add("checked");
-            items[itemIndex][1] = "checked"; // Update the second value in the array
+            // Update the second value in the array
+            items[itemIndex][1] = "checked"; 
         } else {
             listItem.classList.remove("checked");
             listItem.classList.add("not_checked");
-            items[itemIndex][1] = "not_checked"; // Update the second value in the array
+            // Update the second value in the array
+            items[itemIndex][1] = "not_checked"; 
         }
     }
 }
@@ -32,27 +38,28 @@ function addNewItem() {
     if (input === "") {
         alert("Item text empty!");
     } else {
-        items.push([input, "not_checked"]); // Add the new item to the array
-        displayList(); // Refresh the list
+        // Add the new item to the array
+        items.push([input, "not_checked"]); 
+        // Refresh the list
+        displayList(); 
     }
 }
 
-
-function deleteItem(itemText) {
-    // Find the index of the item in the array
-    const itemIndex = items.findIndex(item => item[0] === itemText);
-    items.splice(itemIndex, 1); 
-    displayList(); 
+function deleteItem(index){
+    items.splice(index, 1);
+    displayList();
 }
-
 
 function displayList() {
     // Reset the HTML string
     let str = '<ul id="list">';
 
     // Generate the list items
-    items.forEach(function (item) {
-        str += `<li id="${item[1]}"><button class="delete" onclick="deleteItem('${item[0]}')">X</button>${item[0]}</li>`;
+    items.forEach(function (item, index) {
+        str += `    <li class="${item[1]}">
+                        ${item[0]}
+                        <button class="delete-button" data-index="${index}">X</button>
+                    </li>`;
     });
 
     str += '</ul>';
@@ -65,7 +72,15 @@ function displayList() {
     listItems.forEach(function (item) {
         item.addEventListener("click", listElementClick);
     });
-}
 
-// Initial display of the list
-displayList();
+    // Attach event listeners to all list items delete buttons
+    const deleteButtons = document.querySelectorAll(".delete-button");
+    deleteButtons.forEach(function (button) {
+        button.addEventListener("click", function (e) {
+            // Prevent triggering the listElementClick
+            e.stopPropagation(); 
+            const index = parseInt(button.getAttribute("data-index"));
+            deleteItem(index);
+        });
+    });
+}
