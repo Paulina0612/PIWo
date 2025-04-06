@@ -58,10 +58,14 @@ function add(input, ifChecked){
 }
 
 function deleteItem(index){
-    trash.splice(0, trash.length); 
-    trash.push(items.at(index));
-    items.splice(index, 1);
-    displayList();
+    const ifConfirm = confirm("Are you sure you want to delete item?");
+
+    if (ifConfirm==true){
+        trash.splice(0, trash.length); 
+        trash.push(items.at(index));
+        items.splice(index, 1);
+        displayList();
+    }
 }
 
 function displayList() {
@@ -98,3 +102,4 @@ function displayList() {
         });
     });
 }
+
