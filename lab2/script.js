@@ -1,27 +1,38 @@
-let slides = ["yhguy"]
-let str = '<ul id="list">'
+let items = ["yhguy"];
+
+function listElementClick () {
+    //TODO: Implement
+
+    alert("rctvtfvy");
+};
 
 
 
-function listElementClick(){
-    console.log("efwtrh")
+function addNewItem(){
+    const input = document.getElementById('new_item_text').value;
+
+    if(input == "") alert("Item text empty!");
+    else items.push(input);
+    
+    displayList();
 }
+
 
 
 function displayList() {
-    slides.forEach(function(slide) {
-    str += '<li class="not_checked">'+ slide + '</li>';
-    }); 
+    // Reset the HTML string
+    let str = '<ul id="list">';
+
+    // Generate the list items
+    items.forEach(function (item) {
+        str += `<li class="not_checked" onclick="listElementClick()">${item}</li>`;
+    });
 
     str += '</ul>';
-    document.getElementById("TODOList").innerHTML = str;
 
-    // Attach event listeners to all list items
-    const listItems = document.querySelectorAll("#TODOList li");
-    listItems.forEach(function (item) {
-        item.addEventListener("click", listElementClick);
-    });
+    // Update the DOM with the new list
+    document.getElementById("TODOList").innerHTML = str;
 }
 
-
+// Initial display of the list
 displayList();
