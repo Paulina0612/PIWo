@@ -56,10 +56,14 @@ function add(input, ifChecked){
     if (input === "") {
         alert("Item text empty!");
     } else {
-        // Add the new item to the array
-        items.push([input, ifChecked, null]); 
-        // Refresh the list
-        displayList(); 
+        if(items.length == 17)
+            alert("Too many items!");
+        else {
+            // Add the new item to the array
+            items.push([input, ifChecked, null]); 
+            // Refresh the list
+            displayList(); 
+        }
     }
 }
 
@@ -79,7 +83,7 @@ function deleteItem(index){
 
 function displayList() {
     // Reset the HTML string
-    let str = '<ul id="list">';
+    let str = '<h1>Urgent</h1><ul id="list">';
 
     // Generate the list items
     items.forEach(function (item, index) {
@@ -93,10 +97,10 @@ function displayList() {
     str += '</ul>';
 
     // Update the DOM with the new list
-    document.getElementById("TODOList").innerHTML = str;
+    document.getElementById("urgent").innerHTML = str;
 
     // Attach event listeners to all list items
-    const listItems = document.querySelectorAll("#TODOList li");
+    const listItems = document.querySelectorAll("#urgent li");
     listItems.forEach(function (item) {
         item.addEventListener("click", listElementClick);
     });
