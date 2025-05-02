@@ -1,10 +1,11 @@
 
 function Slider(props){
+    const sliderID = props.name+"_slider";
 
     return (
         <div>
             <label>{props.name}</label>
-            <input type="range"/>
+            <input type="range" id={sliderID}/>
         </div>
     );
 }

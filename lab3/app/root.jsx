@@ -18,8 +18,6 @@ import { createContext } from "react";
 export const BooksContext = createContext();
 
 
-
-
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -53,6 +51,8 @@ export function Layout({ children }) {
 }
 
 export default function App() {
+  const [filters, setFilters] = useState("sdfghtjyuhgfdsa");
+
   const [books, setBooks] = useState([
     {
       id: 0,
@@ -67,12 +67,11 @@ export default function App() {
 
   return (
     <div>
-      <Header/>
+      <Header/> 
       <Filters/>
       <BooksContext.Provider value={books}>
         <BooksList/>
       </BooksContext.Provider>
-      
     </div>
   );
 }

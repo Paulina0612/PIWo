@@ -1,6 +1,5 @@
-import stylesheet from "./styles.css";
-
 function Header(){
+    console.log("BooksList loaded");
 
     return (
         <div className="title">
