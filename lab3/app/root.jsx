@@ -15,7 +15,7 @@ import { useContext, useState } from "react";
 
 
 import { createContext } from "react";
-export const BooksContext = createContext();
+export const BooksContext = createContext([]);
 
 
 export const links = () => [
@@ -51,8 +51,7 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  const [filters, setFilters] = useState("sdfghtjyuhgfdsa");
-
+  const [filterTitle, setFilterTitle] = useState("dsfg");
   const [books, setBooks] = useState([
     {
       id: 0,
@@ -61,16 +60,17 @@ export default function App() {
       pages: 350,
       price: 40,
       cover: "hard"
-    },
+    }
   ]);
+  console.log("cswefvfgrtyu:", books);
 
 
   return (
     <div>
       <Header/> 
-      <Filters/>
+      <Filters setFilterTitle={setFilterTitle}/>
       <BooksContext.Provider value={books}>
-        <BooksList/>
+        <BooksList filterTitle={filterTitle}/>
       </BooksContext.Provider>
     </div>
   );
