@@ -5,7 +5,8 @@ function Combobox(props){
     return (
         <div>
             <label>{props.name}</label>
-            <select id={selectID}>
+            <select onChange={(e) => props.onChange && props.onChange(e.target.value)}>
+                <option value="null">All</option>
                 <option value="hard">Hard</option>
                 <option value="soft">Soft</option>
             </select>

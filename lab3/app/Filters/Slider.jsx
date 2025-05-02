@@ -5,7 +5,7 @@ function Slider(props){
     return (
         <div>
             <label>{props.name}</label>
-            <input type="range" id={sliderID}/>
+            <input type="range" onChange={(e) => props.onChange && props.onChange(e.target.value)}/>
         </div>
     );
 }

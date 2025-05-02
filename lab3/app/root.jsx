@@ -51,7 +51,9 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  const [filterTitle, setFilterTitle] = useState("dsfg");
+  const [filterTitle, setFilterTitle] = useState("");
+  const [filterAuthor, setFilterAuthor] = useState("");
+  const [filterCover, setFilterCover] = useState("");
   const [books, setBooks] = useState([
     {
       id: 0,
@@ -59,18 +61,63 @@ export default function App() {
       author: "Jane Austen",
       pages: 350,
       price: 40,
+      cover: "soft"
+    }, 
+    {
+      id: 1,
+      title: "Diuna",
+      author: "Frank Herbert",
+      pages: 700,
+      price: 60,
       cover: "hard"
+    }, 
+    {
+      id: 2,
+      title: "Yumi i Malarz Koszmarow",
+      author: "Brandon Sanderson",
+      pages: 436,
+      price: 60,
+      cover: "hard"
+    }, 
+    {
+      id: 3,
+      title: "Rok 1984",
+      author: "George Orwell",
+      pages: 300,
+      price: 40,
+      cover: "hard"
+    }, 
+    {
+      id: 4,
+      title: "Folwark zwierzecy",
+      author: "George Orwell",
+      pages: 190,
+      price: 30,
+      cover: "soft"
+    }, 
+    {
+      id: 5,
+      title: "Igrzyska smierci",
+      author: "Suzanne Collins",
+      pages: 300,
+      price: 40,
+      cover: "soft"
     }
   ]);
-  console.log("cswefvfgrtyu:", books);
 
 
   return (
     <div>
       <Header/> 
-      <Filters setFilterTitle={setFilterTitle}/>
+      <Filters 
+        setFilterTitle={setFilterTitle} 
+        setFilterAuthor={setFilterAuthor}
+        setFilterCover={setFilterCover}/>
       <BooksContext.Provider value={books}>
-        <BooksList filterTitle={filterTitle}/>
+        <BooksList 
+          filterTitle={filterTitle} 
+          filterAuthor={filterAuthor}
+          filterCover={filterCover}/>
       </BooksContext.Provider>
     </div>
   );

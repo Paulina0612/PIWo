@@ -5,12 +5,12 @@ import Slider from "./Slider";
 import { useState } from "react";
 
 
-function Filters({ setFilterTitle }){
+function Filters({ setFilterTitle, setFilterAuthor, setFilterCover }){
     return (
         <div className="filtersBar">
             <SearchBar name="Title" onChange={(value) => setFilterTitle(value)}/>
-            <SearchBar name="Author"/>
-            <Combobox name="Cover"/>
+            <SearchBar name="Author" onChange={(value) => setFilterAuthor(value)}/>
+            <Combobox name="Cover" onChange={(value) => setFilterCover(value)}/>
             <Slider name="Price"/>
             <Slider name="Pages"/>
         </div>

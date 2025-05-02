@@ -1,39 +1,42 @@
 import { useContext, useState } from "react";
 import { BooksContext } from "../root.jsx";
 
-function BooksList({ filterTitle }) {
+function BooksList({ filterTitle, filterAuthor, filterCover }) {
 
-    const [filteredBooks, setFilteredBooks] = useState([]); // State for filtered books
-    const booksDB = useContext(BooksContext); // Access books from context
+    const [filteredBooks, setFilteredBooks] = useState([]); 
+    const booksDB = useContext(BooksContext); 
 
-    console.log("Filter Title:", filterTitle);
+    console.log("Filter Title:", filterCover);
 
     function filterBooks() {
         const newFilteredBooks = [];
 
         for (let i = 0; i < booksDB.length; i++) {
             console.log("Checking book:", booksDB[i].title);
-            // Check if the book's title includes the filterTitle
-            if (booksDB[i].title.toLowerCase().includes(filterTitle.toLowerCase())) {
-                newFilteredBooks.push(booksDB[i]); // Add matching book to the array
+            
+            if (booksDB[i].title.toLowerCase().includes(filterTitle.toLowerCase())
+            && booksDB[i].author.toLowerCase().includes(filterAuthor.toLowerCase())
+            && (booksDB[i].cover.toLowerCase().includes(filterCover.toLowerCase())
+            || filterCover=="null")) {
+                newFilteredBooks.push(booksDB[i]); 
             }
         }
 
-        setFilteredBooks(newFilteredBooks); // Update the state with the filtered books
+        setFilteredBooks(newFilteredBooks); 
     }
     console.log("BooksDB:", booksDB);
 
     return (
         <div>
             <p>{filterTitle}</p>
-            <button onClick={filterBooks}>Show</button> {/* Button to filter books */}
+            <button onClick={filterBooks}>Show</button>
             <div>
                 {filteredBooks.length > 0 ? (
                     filteredBooks.map((book, index) => (
-                        <p key={index}>{book.title}</p> // Display filtered books
+                        <p key={index}>{book.title}</p> 
                     ))
                 ) : (
-                    <p>No books found</p> // Display message if no books match
+                    <p>No books found</p> 
                 )}
             </div>
         </div>
