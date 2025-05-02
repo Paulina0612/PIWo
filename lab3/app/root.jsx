@@ -6,8 +6,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import Filters from "./Filters/Filter";
 
 import stylesheet from "./app.css?url";
+import Header from "./Header/Header";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -42,7 +44,12 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div>
+      <Header/>
+      <Filters/>
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }) {
@@ -62,14 +69,17 @@ export function ErrorBoundary({ error }) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <div>
+      
+      <main className="pt-16 p-4 container mx-auto">
+        <h1>{message}</h1>
+        <p>{details}</p>
+        {stack && (
+          <pre className="w-full p-4 overflow-x-auto">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </main>
+    </div>
   );
 }
