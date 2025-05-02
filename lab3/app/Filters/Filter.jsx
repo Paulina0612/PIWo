@@ -2,6 +2,8 @@ import Combobox from "./Combobox";
 import SearchBar from "./SearchBar";
 import Slider from "./Slider";
 import stylesheet from "./styles.css";
+import { useContext, useState } from "react";
+
 
 function Filters(){
     return (

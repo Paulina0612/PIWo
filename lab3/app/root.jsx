@@ -10,6 +10,15 @@ import Filters from "./Filters/Filter";
 
 import stylesheet from "./app.css?url";
 import Header from "./Header/Header";
+import BooksList from "./BooksList/BooksList";
+import { useContext, useState } from "react";
+
+
+import { createContext } from "react";
+export const BooksContext = createContext();
+
+
+
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -44,10 +53,26 @@ export function Layout({ children }) {
 }
 
 export default function App() {
+  const [books, setBooks] = useState([
+    {
+      id: 0,
+      title: "Duma i uprzedzenie",
+      author: "Jane Austen",
+      pages: 350,
+      price: 40,
+      cover: "hard"
+    },
+  ]);
+
+
   return (
     <div>
       <Header/>
       <Filters/>
+      <BooksContext.Provider value={books}>
+        <BooksList/>
+      </BooksContext.Provider>
+      
     </div>
   );
 }
