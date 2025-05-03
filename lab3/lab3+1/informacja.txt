@@ -1,0 +1,4 @@
+Nie udało mi się połączyć z bazą danych. Mam zdjęcie 
+(firebase-collection.png), na którym widać, że bazę 
+postawiłam. Na zdjęciu error.png jest blad ktory mi 
+wyskakiwal, z ktorym nie moglam sobie poradzic. 
