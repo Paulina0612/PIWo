@@ -1,11 +1,18 @@
 
 function Slider(props){
-    const sliderID = props.name+"_slider";
 
     return (
         <div>
-            <label>{props.name}</label>
-            <input type="range" onChange={(e) => props.onChange && props.onChange(e.target.value)}/>
+            <label>{props.name}</label><br/>
+            <label>0</label>
+            <input 
+                type="range" 
+                id="slider" 
+                min={0} 
+                max={props.max} 
+                onChange={(e) => props.onChange && props.onChange(e.target.value)}/>
+                
+            <label>{props.max}</label>
         </div>
     );
 }

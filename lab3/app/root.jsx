@@ -54,6 +54,8 @@ export default function App() {
   const [filterTitle, setFilterTitle] = useState("");
   const [filterAuthor, setFilterAuthor] = useState("");
   const [filterCover, setFilterCover] = useState("");
+  const [filterPrice, setFilterPrice] = useState(0);
+  const [filterPages, setFilterPages] = useState(0);
   const [books, setBooks] = useState([
     {
       id: 0,
@@ -112,12 +114,16 @@ export default function App() {
       <Filters 
         setFilterTitle={setFilterTitle} 
         setFilterAuthor={setFilterAuthor}
-        setFilterCover={setFilterCover}/>
+        setFilterCover={setFilterCover}
+        setFilterPrice={setFilterPrice}
+        setFilterPages={setFilterPages}/>
       <BooksContext.Provider value={books}>
         <BooksList 
           filterTitle={filterTitle} 
-          filterAuthor={filterAuthor}
-          filterCover={filterCover}/>
+          filterAuthor={filterAuthor} 
+          filterPrice={filterPrice}
+          filterCover={filterCover}
+          filterPages={filterPages}/>
       </BooksContext.Provider>
     </div>
   );

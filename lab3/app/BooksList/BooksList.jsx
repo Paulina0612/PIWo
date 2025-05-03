@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { BooksContext } from "../root.jsx";
 
-function BooksList({ filterTitle, filterAuthor, filterCover }) {
+function BooksList({ filterTitle, filterAuthor, filterCover, filterPrice, filterPages }) {
 
     const [filteredBooks, setFilteredBooks] = useState([]); 
     const booksDB = useContext(BooksContext); 
 
-    console.log("Filter Title:", filterCover);
+    console.log("Filter Title:", filterPages, booksDB[0].pages);
 
     function filterBooks() {
         const newFilteredBooks = [];
@@ -17,7 +17,8 @@ function BooksList({ filterTitle, filterAuthor, filterCover }) {
             if (booksDB[i].title.toLowerCase().includes(filterTitle.toLowerCase())
             && booksDB[i].author.toLowerCase().includes(filterAuthor.toLowerCase())
             && (booksDB[i].cover.toLowerCase().includes(filterCover.toLowerCase())
-            || filterCover=="null")) {
+            || filterCover=="null") && booksDB[i].pages > filterPages
+            && booksDB[i].price > filterPrice) {
                 newFilteredBooks.push(booksDB[i]); 
             }
         }
