@@ -6,13 +6,10 @@ function BooksList({ filterTitle, filterAuthor, filterCover, filterPrice, filter
     const [filteredBooks, setFilteredBooks] = useState([]); 
     const booksDB = useContext(BooksContext); 
 
-    console.log("Filter Title:", filterPages, booksDB[0].pages);
-
     function filterBooks() {
         const newFilteredBooks = [];
 
         for (let i = 0; i < booksDB.length; i++) {
-            console.log("Checking book:", booksDB[i].title);
             
             if (booksDB[i].title.toLowerCase().includes(filterTitle.toLowerCase())
             && booksDB[i].author.toLowerCase().includes(filterAuthor.toLowerCase())
@@ -28,17 +25,32 @@ function BooksList({ filterTitle, filterAuthor, filterCover, filterPrice, filter
     console.log("BooksDB:", booksDB);
 
     return (
-        <div>
+        <div className="booksList">
             <p>{filterTitle}</p>
             <button onClick={filterBooks}>Show</button>
             <div>
-                {filteredBooks.length > 0 ? (
-                    filteredBooks.map((book, index) => (
-                        <p key={index}>{book.title}</p> 
-                    ))
-                ) : (
-                    <p>No books found</p> 
-                )}
+                <table className="booksTable">
+                    <tr id="header">
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Price</th>
+                        <th>Cover</th>
+                    </tr>
+                    {filteredBooks.length > 0 ? (
+                        filteredBooks.map((book, index) => (
+                            <tr>
+                                <th>{book.title}</th>
+                                <th>{book.author}</th>
+                                <th>{book.pages}</th>
+                                <th>{book.price}</th>
+                                <th>{book.cover}</th>
+                            </tr>
+                        ))
+                    ) : (
+                        <p>No books found</p> 
+                    )}
+                </table>
             </div>
         </div>
     );
